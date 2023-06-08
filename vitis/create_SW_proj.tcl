@@ -151,8 +151,18 @@ bsp config stdout psu_uart_0
 
 
 # bsp settings
+#repo -set ./pciepsu_v1_4
+set sdk_repo "./repo"
+repo -set $sdk_repo
+#bsp getdrivers
+bsp setdriver -ip psu_pcie -driver pciepsu -ver 1.4
+bsp setdriver -ip psu_pcie_attrib_0 -driver pciepsu -ver 1.4
+bsp setdriver -ip psu_pcie_dma -driver pciepsu -ver 1.4
+bsp setdriver -ip psu_pcie_high1 -driver pciepsu -ver 1.4
+bsp setdriver -ip psu_pcie_high2 -driver pciepsu -ver 1.4
+bsp setdriver -ip psu_pcie_low -driver pciepsu -ver 1.4
 #bsp setdriver -ip psu_dp -driver dppsu -ver 1.2
-#bsp regenerate
+bsp regenerate
 
 #puts "Build platform project"
 platform write
@@ -161,7 +171,6 @@ platform write
 #creating empty application
 #sdk createapp -name ${project_name}_app -hwproject hw_0 -proc ps7_cortexa9_0 -os standalone -lang C -app {Empty Application} -bsp ${project_name}_bsp
 #sdk createapp -name ${project_name}_app -hwproject hw_0 -proc psu_cortexa53_0 -os standalone -lang C -app {Empty Application} -bsp ${project_name}_bsp
-
 
 
 #repo -set ./elf-bootloader-master
