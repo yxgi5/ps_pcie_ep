@@ -143,6 +143,9 @@ static int exp_dma_open(struct inode * in, struct file * file) {
 
 	dev_dbg(xdev->dev, "PS PCIe DMA character device minor number %d is opened\n",
 					minor_num);
+					
+	printk("PS PCIe DMA character device minor number %d is opened\n",
+					minor_num);
 
 	return 0;
 }
@@ -324,6 +327,8 @@ static int pio_open(struct inode * in, struct file * file) {
 	file->private_data = xdev;
 
 	dev_dbg(xdev->dev, "PS PCIe PIO character device is opened\n");
+	
+	printk("PS PCIe PIO character device is opened\n");
 
 	return 0;
 }

@@ -65,10 +65,10 @@ static void usage(void)
 
 int main(int argc, char *argv[])
 {
-	unsigned char *txbuffer = NULL;
-	unsigned char *rxbuffer = NULL;
-	unsigned char dma_path[50];
-	unsigned char dir[5] = {'\0'};
+    char *txbuffer = NULL;
+    char *rxbuffer = NULL;
+    char dma_path[50];
+    char dir[5] = {'\0'};
 	int opt;
 	int board_number;
 	long offset;
@@ -141,14 +141,14 @@ int main(int argc, char *argv[])
 
 	if (strncasecmp(dir, "s2c", 3) == 0)
 	{
-		txbuffer =(unsigned char *) valloc(packet_len);
+        txbuffer =(char *) valloc(packet_len);
 		if(!txbuffer)
 		{
 			printf("Unable to allocate tx buffer\n");
 			close(datafd);
 			exit(-1);
 		}
-		memset((unsigned char *)txbuffer, 'Z', packet_len);
+        memset((char *)txbuffer, 'Z', packet_len);
 		gettimeofday(&before,NULL);
 		ret = pwrite (datafd, txbuffer, packet_len, offset);
 		gettimeofday(&after,NULL);
@@ -159,14 +159,14 @@ int main(int argc, char *argv[])
 	}
 	else if (strncasecmp(dir, "c2s", 3) == 0)
 	{
-		rxbuffer = (unsigned char *) valloc(packet_len);
+        rxbuffer = (char *) valloc(packet_len);
 		if(!rxbuffer)
 		{
 			printf("Unable to allocate rx buffer\n");
 			free(txbuffer);
 			close(datafd);
 		}
-		memset((unsigned char*)rxbuffer, '\0', packet_len);
+        memset((char*)rxbuffer, '\0', packet_len);
 		gettimeofday(&before,NULL);
 		ret = pread (datafd, rxbuffer, packet_len, offset);
 		gettimeofday(&after,NULL);

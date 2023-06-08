@@ -31,3 +31,19 @@ cd app/
 ./pio_test -o 0x0 -l 64
 ```
 
+
+# pcie_manage
+
+xsct
+```
+mrd 0x100000
+mwr -size b 0x100000 0xb5
+```
+那么可以在 pcie_manage 读到
+
+反之，用 pcie_manage 写， 也可以在 xsct 里读到
+
+
+
+
+
