@@ -35,6 +35,7 @@ clean_apps::
 
 insert:: 
 	@$(call insert_dma_driver)
+	chmod 777 /dev/ps_pcie*
 		@echo "***** Driver Loaded *****"
 
 remove::
