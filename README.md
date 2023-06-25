@@ -24,13 +24,25 @@ zynqmp-pspcie-epdma
 ```
 make
 sudo make insert
+
 sudo chmod 777 /dev/ps_pcie*
 cd app/
 ./simple_test -c 0 -a 0x100000 -l 1024 -d s2c
 ./simple_test -c 1 -a 0x100000 -l 1024 -d c2s
 ./pio_test -o 0x0 -l 64
 ```
-
+可查看PC物理地址分布
+```
+sudo cat /proc/iomem
+```
+查看dma的设备channel
+```
+sudo ls /sys/class/dma/ -l
+```
+查看PC中断，应该出现"PS PCIe DMA MSI Handler", 获取对应的中断号
+```
+sudo cat /proc/interrupts
+```
 
 # pcie_manage
 
