@@ -19,8 +19,8 @@
 //#define DEVICE_NAME_DEFAULT "/dev/xdma0_c2h_0"
 #define DEVICE_NAME_DEFAULT "/dev/ps_pcie_dmachan1_0"
 //#define IMG_RAM_POS     (512*1024*1024)
-//#define IMG_RAM_POS (0x10000000)
-#define IMG_RAM_POS (0x1000000)
+#define IMG_RAM_POS (0x10000000)
+//#define IMG_RAM_POS (0x1000000)
 
 xdma_programe::xdma_programe()
 {
