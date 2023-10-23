@@ -44,8 +44,24 @@ int xdma_programe::read_pack(char *pData, int len)
 //        lseek(dev_fd, IMG_RAM_POS, SEEK_SET);
 //        read(dev_fd, pData, len);
 //        return len;
+        if(len<=4194304)
+        {
+            ret = pread (dev_fd, pData, len, IMG_RAM_POS);
+        }
+        else
+        {
+            int offset=0;
 
-        ret = pread (dev_fd, pData, len, IMG_RAM_POS);
+            
+            while((offset+4194304)<len)
+            {
+                ret = pread (dev_fd, pData+offset, 4194304, IMG_RAM_POS+offset);
+                offset += 4194304;
+            }
+
+            ret = pread (dev_fd, pData+offset, len-offset, IMG_RAM_POS+offset);
+        }
+        
         return ret;
     }
     else

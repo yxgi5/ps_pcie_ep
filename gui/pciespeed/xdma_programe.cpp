@@ -29,8 +29,10 @@ xdma_programe::xdma_programe(bool isWrite)
 //#define DEVICE_NAME_READ "/dev/xdma0_c2h_0"
 //#define DEVICE_NAME_WRITE "/dev/xdma/card0/h2c0"
 //#define DEVICE_NAME_WRITE "/dev/xdma0_h2c_0"
-#define TEST_BUFF_LEN       (8*1024*1024)
-#define TEST_OFFSET_RAM     (1024*1024*1024-TEST_BUFF_LEN)
+//#define TEST_BUFF_LEN       (8*1024*1024)
+//#define TEST_OFFSET_RAM     (1024*1024*1024-TEST_BUFF_LEN)
+#define TEST_OFFSET_RAM 0x10000000
+#define TEST_BUFF_LEN   4194304
 
 void xdma_programe::run()
 {
